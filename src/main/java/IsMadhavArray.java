@@ -17,9 +17,10 @@
  */
 
 class IsMadhavArray {
-	static int isMadhavChecker(int[ ] a) {
-		if(a.length < 3 )
+	static int isMadhavArrayChecker(int[ ] a) {
+		if(a.length < 3 ) {
 			return 0;
+		}
 
 		int i = 1, counter = 2;
 		while (i < a.length) {
@@ -29,18 +30,22 @@ class IsMadhavArray {
 				sum +=a[i];
 			}
 
-			if(sum != a[0])
+			if (sum != a[0]) {
 				return 0;
+			}
 
-			if(i == a.length) {
-				if(counter*(counter+1)/2 == a.length)
+			if (i == a.length) {
+				if (counter*(counter+1)/2 == a.length) {
 					return 1;
+				}
 			} else {
 				counter++;
-				if((i+counter) > a.length)
+				if ((i+counter) > a.length) {
 					return 0;
+				}
 			}
 		}
+
 		return 1;
 	}
 }
