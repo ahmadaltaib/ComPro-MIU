@@ -16,25 +16,28 @@
 public class AllPossibilities {
 
     static int isAllPossibilities(int[] a) {
-        if(a.length == 0) return 0;
+        if (a.length == 0) {
+            return 0;
+        }
 
-        int i, j, temp, result = 1;
+        int[] temp = new int[a.length];
 
-        for(i = 0; i < a.length; i++) {
-            for(j = 0; j < a.length; j++) {
-                if(a[i] < a[j]) {
-                    temp = a[i];
-                    a[i] = a[j];
-                    a[j] = temp;
-                }
+        System.out.println(temp);
+
+        for (int j = 0; j < a.length; j++) {
+            if (a[j] > a.length - 1 || a[j] < 0) {
+                return 0;
+            } else {
+                temp[a[j]] = 1;
             }
         }
-        for(i = 0; i < a.length; i++) {
-            if(a[i] != i) {
-                result = 0;
-                break;
+
+        for (int i = 0; i < a.length; i++) {
+            if (temp[i] == 0) {
+                return 0;
             }
         }
-        return result;
+
+        return 1;
     }
 }
