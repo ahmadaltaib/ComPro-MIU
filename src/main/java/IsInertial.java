@@ -1,8 +1,8 @@
 /**
  * An array is defined to be inertial if the following conditions hold:
- * a. it contains at least one odd value
- * b. the maximum value in the array is even
- * c. every odd value is greater than every even value that is not the maximum value.
+ * a. it contains at least one odd value (hasOddNumber)
+ * b. the maximum value in the array is even (isMaxIsEven)
+ * c. every odd value is greater than every even value that is not the maximum value. (2nd max even < min Odd)
  * So {11, 4, 20, 9, 2, 8} is inertial because
  * a. it contains at least one odd value
  * b. the maximum value in the array is 20 which is even
@@ -64,4 +64,33 @@ class IsInertial {
 		
 		return 1;
 	}
+
+	static int isInertialArr(int[] a) {
+		boolean hasOddNumber = false;
+		int minOddNumber = Integer.MAX_VALUE;
+		int maxOddNumber = Integer.MIN_VALUE;
+		int maxEvenNumber = Integer.MIN_VALUE;
+		int secondMaxEvenNumber = Integer.MIN_VALUE;
+
+		for(Integer num : a) {
+			if (num%2 != 0) {
+				hasOddNumber = true;
+				minOddNumber = (num<minOddNumber)? num : minOddNumber;
+				maxOddNumber = (num>maxOddNumber)? num : maxOddNumber;
+			} else if (num > maxEvenNumber) {
+				secondMaxEvenNumber = maxEvenNumber;
+				maxEvenNumber = num ;
+			} else if (num > secondMaxEvenNumber && num != maxEvenNumber) {
+				secondMaxEvenNumber = num ;
+			}
+
+		}
+
+		if (hasOddNumber && (maxEvenNumber > maxOddNumber) && (minOddNumber > secondMaxEvenNumber))
+			return 1;
+
+		return 0;
+
+	}
+
 }

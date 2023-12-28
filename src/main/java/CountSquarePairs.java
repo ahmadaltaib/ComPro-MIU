@@ -28,11 +28,9 @@ public class CountSquarePairs {
         int countSquarePairs = 0;
         for(int i = 0; i < a.length; i++){
             for(int j = 0; j < a.length; j++){
-                if(a[i] > 0 && a[j] > 0){
-                    if(a[i] < a[j]){
-                        if(isPerfectSquare(a[i] + a[j])){
-                            countSquarePairs ++;
-                        }
+                if(a[i] > 0 && a[j] > 0 && (a[i] < a[j])) {
+                    if(isPerfectSquare(a[i] + a[j])){
+                        countSquarePairs ++;
                     }
                 }
             }

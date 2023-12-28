@@ -18,38 +18,29 @@
 class IsMadhavArray {
 	static int isMadhavArrayChecker(int[ ] a) {
 
-		if(isMadhavArrayLength(a)) {
+		if(validateMadhavArrayLength(a)) {
 			return 0;
 		}
 
-		int i = 1, counter = 2;
-		while (i < a.length) {
+		int index = 1, counter = 2;
+		while (index < a.length) {
 
 			int sum = 0;
-			for (int j = 0; j < counter; j++, i++) {
-				sum += a[i];
+			for (int j = index; j < (index+counter); j++) {
+				sum += a[j];
 			}
 
-			if (sum != a[0]) {
+			if (sum != a[0]) 
 				return 0;
-			}
 
-			if (i == a.length) {
-				if (counter*(counter+1)/2 == a.length) {
-					return 1;
-				}
-			} else {
-				counter++;
-				if ((i+counter) > a.length) {
-					return 0;
-				}
-			}
+			index += counter;
+			counter ++;
 		}
 
 		return 1;
 	}
 
-	static boolean isMadhavArrayLength(int[ ] a){
+	static boolean validateMadhavArrayLength(int[ ] a){
 		for (int i=0; i < a.length; i++) {
 			if(a[i] == a.length*(a.length+1)/2 ) {
 				return true;

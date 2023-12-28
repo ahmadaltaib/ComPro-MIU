@@ -34,12 +34,12 @@ class PrimeCount {
 		return count;
 	}
 	
-	static boolean isPrimeNumber(int number) {
-		if(number == 2 || number == 3)
-			return true;
+	static boolean isPrimeNumber(int n) {
+		if(n <= 1)
+			return false;
 		
-		for (int i = 2; i <= number/2; i++) {
-			if(number % i == 0)
+		for (int i = 2; i <= Math.sqrt(n); i++) {
+			if(n % i == 0)
 				return false;
 		}
 		
